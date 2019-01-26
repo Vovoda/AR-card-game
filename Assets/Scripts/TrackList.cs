@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TrackList : MonoBehaviour
 {
-    [SerializeField] private Text text;
+    //[SerializeField] private Text text;
 
     // Update is called once per frame
     void Update()
@@ -22,19 +22,19 @@ public class TrackList : MonoBehaviour
         // Iterate through the list of active trackables
         foreach (TrackableBehaviour tb in activeTrackables)
         {
-            text.transform.position = tb.transform.position;
+           //text.transform.position = tb.transform.position;
             if(tb.transform.position.x < -0.5f)
             {
-                text.text = "Vendu";
+                //text.text = "Vendu";
             }
             else if (tb.transform.position.x > 0.5f)
             {
-                text.text = "Equipé";
+                //text.text = "Equipé";
 
             }
             else
             {
-                text.text = "";
+                //text.text = "";
             }
         }
     }
