@@ -195,6 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   cible: {fileID: 1230871305}
 --- !u!102 &178438741
 TextMesh:
@@ -3147,6 +3149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2cf12a51176a343957a0ea306c8798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textObject: {fileID: 178438739}
 --- !u!1 &1194773479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,7 +3369,7 @@ GameObject:
   - component: {fileID: 1230871308}
   - component: {fileID: 1230871307}
   m_Layer: 0
-  m_Name: ImageTarget (10)
+  m_Name: TEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
