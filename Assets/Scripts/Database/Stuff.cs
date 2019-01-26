@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stuff : MonoBehaviour
+public class Stuff : Card
 {
-    enum StuffType {helmet, bottom, top, weapon};
+    enum StuffType {Casque, Chaussures, Haut, Arme};
     [SerializeField] StuffType myType;
     [SerializeField] private int number;
     [SerializeField] private int price;
 
-    // Start is called before the first frame update
-    void Start()
+    public void DisplayCharacterictics()
     {
-        
+        string textToDisplay = CardName + "\n " + myType.ToString() + "\n" + price + " G";
+        GameManager.instance.SetSideText(textToDisplay);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckSell()
     {
-        
+        if (this.transform.position.y < -0f)
+        {
+            GameManager.instance.SetBottomText("Vendu");
+        }
+        else
+        {
+            GameManager.instance.SetBottomText("");
+        }
     }
 }
