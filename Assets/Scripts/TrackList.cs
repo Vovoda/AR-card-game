@@ -13,7 +13,7 @@ public class TrackList : MonoBehaviour
         StateManager sm = TrackerManager.Instance.GetStateManager();
 
         // Query the StateManager to retrieve the list of
-        // currently 'active' trackables 
+        // currently 'active' trackables
         //(i.e. the ones currently being tracked by Vuforia)
         IEnumerable<TrackableBehaviour> activeTrackables = sm.GetActiveTrackableBehaviours();
         // Iterate through the list of active trackables
