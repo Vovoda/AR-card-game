@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
+using UnityEngine.UI;
 
 public class TrackList : MonoBehaviour
 {
+    [SerializeField] private Text text;
 
     // Update is called once per frame
     void Update()
@@ -18,23 +20,21 @@ public class TrackList : MonoBehaviour
         IEnumerable<TrackableBehaviour> activeTrackables = sm.GetActiveTrackableBehaviours();
 
         // Iterate through the list of active trackables
-        Debug.Log("List of trackables currently active (tracked): ");
         foreach (TrackableBehaviour tb in activeTrackables)
         {
-            Debug.Log("Trackable: " + tb.TrackableName);
-            Debug.Log("Position" + tb.transform.position);
+            text.transform.position = tb.transform.position;
             if(tb.transform.position.x < -0.5f)
             {
-                tb.transform.GetComponentInChildren<TextMesh>().text = "Vendu";
+                text.text = "Vendu";
             }
             else if (tb.transform.position.x > 0.5f)
             {
-                tb.transform.GetComponentInChildren<TextMesh>().text = "Equipé";
+                text.text = "Equipé";
 
             }
             else
             {
-                tb.transform.GetComponentInChildren<TextMesh>().text = "";
+                text.text = "";
             }
         }
     }
