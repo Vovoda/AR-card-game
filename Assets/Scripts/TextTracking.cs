@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class TextTracking : MonoBehaviour
 {
-    [SerializeField] private string cardName;
 
-    protected string CardName { get => cardName; set => cardName = value; }
+    [SerializeField] private GameObject target;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +16,6 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //this.transform.position = target.transform.position;
     }
-
 }
