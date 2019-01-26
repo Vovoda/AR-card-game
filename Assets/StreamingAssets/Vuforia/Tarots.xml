@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="atouts_11" size="6.100000 11.408787" />
+    <ImageTarget name="atouts_10" size="6.100000 11.290683" />
+    <ImageTarget name="atouts_9" size="6.100000 11.432704" />
+    <ImageTarget name="atouts_8" size="6.100000 11.108025" />
+    <ImageTarget name="atouts_7" size="6.100000 11.223493" />
+    <ImageTarget name="atouts_6" size="6.100000 11.423173" />
+    <ImageTarget name="atouts_5" size="6.100000 11.305164" />
+    <ImageTarget name="atouts_4" size="6.100000 11.397703" />
+    <ImageTarget name="atouts_3" size="6.100000 11.283090" />
+    <ImageTarget name="atouts_1" size="6.100000 11.540890" />
+    <ImageTarget name="Carreaux_1" size="6.100000 11.403790" />
+    <ImageTarget name="Careaux_K" size="6.100000 3.235056" />
+    <ImageTarget name="Careaux_2" size="6.100000 11.392647" />
+    <ImageTarget name="atouts_2" size="6.100000 11.477801" />
+    <ImageTarget name="Trefle_1" size="6.100000 3.251512" />
+  </Tracking>
+</QCARConfig>
