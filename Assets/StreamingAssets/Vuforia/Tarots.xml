@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="coeurs_K" size="6.100000 11.286902" />
+    <ImageTarget name="coeurs_Q" size="6.100000 11.552441" />
+    <ImageTarget name="coeurs_C" size="6.100000 11.443907" />
+    <ImageTarget name="coeurs_J" size="6.100000 11.453587" />
+    <ImageTarget name="coeurs_10" size="6.100000 11.440717" />
+    <ImageTarget name="coeurs_9" size="6.100000 11.431092" />
+    <ImageTarget name="coeurs_8" size="6.100000 11.368763" />
+    <ImageTarget name="coeurs_7" size="6.100000 11.517933" />
+    <ImageTarget name="coeurs_6" size="6.100000 11.286902" />
+    <ImageTarget name="coeurs_5" size="6.100000 11.552441" />
+    <ImageTarget name="coeurs_4" size="6.100000 11.453587" />
+    <ImageTarget name="coeurs_3" size="6.100000 11.440717" />
+    <ImageTarget name="coeurs_2" size="6.100000 11.431092" />
+    <ImageTarget name="coeurs_1" size="6.100000 11.368763" />
+    <ImageTarget name="Back" size="6.100000 11.392647" />
+    <ImageTarget name="piques_K" size="6.100000 11.503593" />
+    <ImageTarget name="piques_Q" size="6.100000 11.392647" />
+    <ImageTarget name="piques_C" size="6.100000 11.503593" />
+    <ImageTarget name="piques_J" size="6.100000 11.368763" />
+    <ImageTarget name="piques_10" size="6.100000 11.492193" />
+    <ImageTarget name="piques_9" size="6.100000 11.392647" />
+    <ImageTarget name="piques_8" size="6.100000 11.402110" />
+    <ImageTarget name="piques_7" size="6.100000 11.529387" />
+    <ImageTarget name="piques_6" size="6.100000 11.529387" />
+    <ImageTarget name="piques_5" size="6.100000 11.492193" />
+    <ImageTarget name="piques_4" size="6.100000 11.503593" />
+    <ImageTarget name="piques_3" size="6.100000 11.503593" />
+    <ImageTarget name="piques_2" size="6.100000 11.392647" />
+    <ImageTarget name="piques_1" size="6.100000 11.492193" />
+    <ImageTarget name="Trefle_K" size="6.100000 11.505063" />
+    <ImageTarget name="Trefle_Q" size="6.100000 11.471068" />
+    <ImageTarget name="Trefle_C" size="6.100000 11.343186" />
+    <ImageTarget name="Trefle_J" size="6.100000 11.564043" />
+    <ImageTarget name="Trefle_10" size="6.100000 11.343186" />
+    <ImageTarget name="Trefle_9" size="6.100000 11.516490" />
+    <ImageTarget name="Trefle_8" size="6.100000 11.452008" />
+    <ImageTarget name="Trefle_7" size="6.100000 11.551064" />
+    <ImageTarget name="Trefle_5" size="6.100000 11.419916" />
+    <ImageTarget name="Trefle_6" size="6.100000 11.551064" />
+    <ImageTarget name="Trefle_4" size="6.100000 11.330399" />
+    <ImageTarget name="Trefle_3" size="6.100000 11.482353" />
+    <ImageTarget name="Trefle_2" size="6.100000 11.489195" />
+    <ImageTarget name="Trefle_1" size="6.100000 11.443907" />
+    <ImageTarget name="excuse" size="6.100000 11.343186" />
+    <ImageTarget name="Careaux_K" size="6.100000 11.502119" />
+    <ImageTarget name="Careaux_Q" size="6.100000 11.286902" />
+    <ImageTarget name="Careaux_C" size="6.100000 11.575693" />
+    <ImageTarget name="Careaux_J" size="6.100000 11.540890" />
+    <ImageTarget name="Careaux_10" size="6.100000 11.439112" />
+    <ImageTarget name="Careaux_9" size="6.100000 11.675269" />
+    <ImageTarget name="Careaux_8" size="6.100000 11.389240" />
+    <ImageTarget name="Careaux_7" size="6.100000 11.453587" />
+    <ImageTarget name="Careaux_6" size="6.100000 11.515042" />
+    <ImageTarget name="Careaux_5" size="6.100000 11.703641" />
+    <ImageTarget name="Careaux_4" size="6.100000 11.588699" />
+    <ImageTarget name="Careaux_3" size="6.100000 11.502119" />
+    <ImageTarget name="Careaux_2" size="6.100000 11.392647" />
+    <ImageTarget name="Careaux_1" size="6.100000 11.577021" />
+    <ImageTarget name="atouts_21" size="6.100000 11.319455" />
+    <ImageTarget name="atouts_20" size="6.100000 11.631356" />
+    <ImageTarget name="atouts_19" size="6.100000 11.490698" />
+    <ImageTarget name="atouts_18" size="6.100000 11.443907" />
+    <ImageTarget name="atouts_17" size="6.100000 11.466455" />
+    <ImageTarget name="atouts_16" size="6.100000 11.421548" />
+    <ImageTarget name="atouts_15" size="6.100000 11.540890" />
+    <ImageTarget name="atouts_14" size="6.100000 11.466455" />
+    <ImageTarget name="atouts_13" size="6.100000 11.106721" />
+    <ImageTarget name="atouts_12" size="6.100000 11.479324" />
     <ImageTarget name="atouts_11" size="6.100000 11.408787" />
     <ImageTarget name="atouts_10" size="6.100000 11.290683" />
     <ImageTarget name="atouts_9" size="6.100000 11.432704" />
@@ -11,10 +79,6 @@
     <ImageTarget name="atouts_4" size="6.100000 11.397703" />
     <ImageTarget name="atouts_3" size="6.100000 11.283090" />
     <ImageTarget name="atouts_1" size="6.100000 11.540890" />
-    <ImageTarget name="Carreaux_1" size="6.100000 11.403790" />
-    <ImageTarget name="Careaux_K" size="6.100000 3.235056" />
-    <ImageTarget name="Careaux_2" size="6.100000 11.392647" />
     <ImageTarget name="atouts_2" size="6.100000 11.477801" />
-    <ImageTarget name="Trefle_1" size="6.100000 3.251512" />
   </Tracking>
 </QCARConfig>
