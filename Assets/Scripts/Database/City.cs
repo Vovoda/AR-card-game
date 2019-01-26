@@ -5,12 +5,19 @@ using UnityEngine;
 public class City : Card
 {
     [SerializeField] private string cityEffect;
+    [SerializeField] private int helmetPercentage, topPercentage,bottomPercentage, weaponPercentage;
+    private City leftCity;
+    private City rightCity;
+
+    public City LeftCity { get => leftCity; set => leftCity = value; }
+    public City RightCity { get => rightCity; set => rightCity = value; }
 
     public City(string newName, string newEffect)
     {
-        cardName = newName;
+        CardName = newName;
         cityEffect = newEffect;
     }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -6,7 +6,14 @@ using UnityEngine.UI;
 
 public class TrackList : MonoBehaviour
 {
-    //[SerializeField] private Text text;
+    [SerializeField] private GameObject textObject;
+    private TextMesh text;
+
+    void Start()
+    {
+        text = textObject.GetComponent<TextMesh>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -15,15 +22,15 @@ public class TrackList : MonoBehaviour
         StateManager sm = TrackerManager.Instance.GetStateManager();
 
         // Query the StateManager to retrieve the list of
-        // currently 'active' trackables 
+        // currently 'active' trackables
         //(i.e. the ones currently being tracked by Vuforia)
         IEnumerable<TrackableBehaviour> activeTrackables = sm.GetActiveTrackableBehaviours();
-
         // Iterate through the list of active trackables
         foreach (TrackableBehaviour tb in activeTrackables)
         {
-           //text.transform.position = tb.transform.position;
-            if(tb.transform.position.x < -0.5f)
+            textObject.transform.position = tb.transform.position;
+            textObject.transform.position = new Vector3(tb.transform.position.x, tb.transform.position.y - 0.5f, tb.transform.position.z);
+            if (tb.transform.position.x < -0.5f)
             {
                 //text.text = "Vendu";
             }
