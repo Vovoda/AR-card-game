@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    [SerializeField] protected string cardName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +17,5 @@ public class Card : MonoBehaviour
     {
         
     }
+
 }
