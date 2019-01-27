@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
                 mapInitializer.TurnRight();
                 canTurn = false;
             }
-            else if (player.transform.rotation.eulerAngles.y < 280 && player.transform.rotation.eulerAngles.y > 260 && && Input.GetKeyDown("l"))
+            else if (player.transform.rotation.eulerAngles.y < 280 && player.transform.rotation.eulerAngles.y > 260 && Input.GetKeyDown("l"))
             {
                 mapInitializer.TurnLeft();
                 canTurn = false;
