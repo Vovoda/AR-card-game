@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject chaussures;
     [SerializeField] private GameObject haut;
     [SerializeField] private GameObject armes;
+    [SerializeField] private GameObject bourse;
 
     //Database
     private Stuff[] listStuff;
@@ -117,7 +118,14 @@ public class GameManager : MonoBehaviour
 
     public float EstimateStuffPrice(Stuff currentStuff)
     {
-        return (currentStuff.Price * currentCity.GetTypePercentage(currentStuff.MyType.ToString()) / 100);
+        float estimatedPrice = currentStuff.Price * currentCity.GetTypePercentage(currentStuff.MyType.ToString()) / 100;
+        bourse.SetActive(true);
+        bourse.transform.GetChild(1).GetComponent<Text>().text = estimatedPrice.ToString();
+        return estimatedPrice;
+    }
 
+    public void ChangeBoursePosition(Vector3 position)
+    {
+        bourse.transform.position = position;
     }
 }

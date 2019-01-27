@@ -52,7 +52,7 @@ public class Stuff : Card, ITrackableEventHandler
             }
             if (!test && positionInScreen.y > 0 && positionInScreen.y < (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
             {
-                Debug.Log("coucou");
+                
             }
         }
         if (test && state!=State.Sold)
