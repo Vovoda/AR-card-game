@@ -7,6 +7,8 @@ public class Map
     List<List<City>> rowOfCities;
     int totalSize;
 
+    public City curCity = null;
+
     public List<List<City>> RowOfCities { get => rowOfCities; set => rowOfCities = value; }
 
     public Map(List<List<City>> _rowOfCities)
