@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="backExcuse" size="6.100000 11.370502" />
+    <ImageTarget name="excuse" size="6.100000 3.245998" />
     <ImageTarget name="coeurs_K" size="6.100000 11.286902" />
     <ImageTarget name="coeurs_Q" size="6.100000 11.552441" />
     <ImageTarget name="coeurs_C" size="6.100000 11.443907" />
@@ -44,7 +46,6 @@
     <ImageTarget name="Trefle_3" size="6.100000 11.482353" />
     <ImageTarget name="Trefle_2" size="6.100000 11.489195" />
     <ImageTarget name="Trefle_1" size="6.100000 11.443907" />
-    <ImageTarget name="excuse" size="6.100000 11.343186" />
     <ImageTarget name="Careaux_K" size="6.100000 11.502119" />
     <ImageTarget name="Careaux_Q" size="6.100000 11.286902" />
     <ImageTarget name="Careaux_C" size="6.100000 11.575693" />
