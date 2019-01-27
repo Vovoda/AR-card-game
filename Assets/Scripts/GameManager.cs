@@ -116,16 +116,20 @@ public class GameManager : MonoBehaviour
         goldText.text = gold.ToString();
     }
 
-    public float EstimateStuffPrice(Stuff currentStuff)
+    public void EstimateStuffPrice(Stuff currentStuff)
     {
         float estimatedPrice = currentStuff.Price * currentCity.GetTypePercentage(currentStuff.MyType.ToString()) / 100;
         bourse.SetActive(true);
         bourse.transform.GetChild(1).GetComponent<Text>().text = estimatedPrice.ToString();
-        return estimatedPrice;
     }
 
     public void ChangeBoursePosition(Vector3 position)
     {
         bourse.transform.position = position;
+    }
+
+    public void HideBourse()
+    {
+        bourse.SetActive(false);
     }
 }
