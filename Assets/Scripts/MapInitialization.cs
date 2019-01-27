@@ -17,6 +17,8 @@ public class MapInitialization : MonoBehaviour
 
     public bool isMapSetUp;
 
+    public int CurrentLevel { get => currentLevel; set => currentLevel = value; }
+
     private void Start()
     {
         atoutsId = new List<string>();

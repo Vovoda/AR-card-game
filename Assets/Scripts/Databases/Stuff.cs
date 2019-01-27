@@ -45,7 +45,6 @@ public class Stuff : Card, ITrackableEventHandler
             GameManager.instance.ChangeSideTextPosition(new Vector3(transform.position.x + 0.6f, transform.position.y, transform.position.z));
             GameManager.instance.SetSpriteObject(CardSprite);
             GameManager.instance.ChangeSpriteObjectPosition(transform.position);
-            DisplayCharacterictics();
             Vector3 positionInScreen = Camera.main.WorldToScreenPoint(this.transform.position);
             if (!selling && positionInScreen.y > (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
             {
