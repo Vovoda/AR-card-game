@@ -22,5 +22,24 @@ public class City : Card
         weaponPercentage = newWeapon;
     }
 
+    public int GetTypePercentage(string stuff)
+    {
+        if(stuff == "Casque")
+        {
+            return helmetPercentage;
+        }
+        else if(stuff == "Chaussures")
+        {
+            return topPercentage;
+        }
+        else if(stuff == "Haut")
+        {
+            return bottomPercentage;
+        }
+        else if(stuff == "Arme")
+        {
+            return weaponPercentage;
+        }
+    }
 
 }
