@@ -37,7 +37,6 @@ public class MapInitialization : MonoBehaviour
             // Iterate through the list of active trackables
             foreach (TrackableBehaviour tb in activeTrackables)
             {
-            
                 if(!atoutsId.Contains(tb.TrackableName))
                 {
                     atoutsId.Add(tb.TrackableName);
