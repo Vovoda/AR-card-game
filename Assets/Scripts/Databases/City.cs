@@ -39,11 +39,11 @@ public class City
         }
         else if(stuff == "Chaussures")
         {
-            return topPercentage;
+            return bottomPercentage;
         }
         else if(stuff == "Haut")
         {
-            return bottomPercentage;
+            return topPercentage;
         }
         else if(stuff == "Arme")
         {
