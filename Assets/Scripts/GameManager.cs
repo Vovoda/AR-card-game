@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
                 mapInitializer.TurnRight();
                 canTurn = false;
             }
-            else if (player.transform.rotation.eulerAngles.y < 280 && player.transform.rotation.eulerAngles.y > 260 && Input.GetKeyDown("l"))
+            else if (player.transform.rotation.eulerAngles.y < 280 && player.transform.rotation.eulerAngles.y > 260 && && Input.GetKeyDown("l"))
             {
                 mapInitializer.TurnLeft();
                 canTurn = false;
@@ -148,123 +148,6 @@ public class GameManager : MonoBehaviour
             mapInitializer.gameObject.SetActive(true);
             gameStep = Step.Travelling;
             Debug.Log("Travelling");
-        }
-    }
-    public void EndGameScore()
-    {
-        int ones = 0;
-        int twos = 0;
-        int threes = 0;
-        int fours = 0;
-        int fives = 0;
-        int carreaux = 0;
-        int piques = 0;
-        int trefles = 0;
-        int coeurs = 0;
-
-        // Get the Vuforia StateManager
-        StateManager sm = TrackerManager.Instance.GetStateManager();
-
-        // Query the StateManager to retrieve the list of
-        // currently 'active' trackables 
-        //(i.e. the ones currently being tracked by Vuforia)
-        IEnumerable<TrackableBehaviour> activeTrackables = sm.GetActiveTrackableBehaviours();
-
-        // Iterate through the list of active trackables
-        foreach (TrackableBehaviour tb in activeTrackables)
-        {
-            if (!atoutsId.Contains(tb.TrackableName))
-            {
-                Stuff savedStuff = tb.transform.GetComponent<Stuff>();
-                gold += savedStuff.Price;
-                goldText.text = gold.ToString();
-                //Check number
-                if (savedStuff.Number == 1)
-                {
-                    ones++;
-                }
-                else if (savedStuff.Number == 2)
-                {
-                    twos++;
-                }
-                else if (savedStuff.Number == 3)
-                {
-                    threes++;
-                }
-                else if (savedStuff.Number == 4)
-                {
-                    fours++;
-                }
-                else if (savedStuff.Number == 5)
-                {
-                    fives++;
-                }
-                //Check Figure
-                if (savedStuff.mytype == Stuff.StuffType.Casque)
-                {
-                    carreaux++;
-                }
-                else if (savedStuff.mytype == Stuff.StuffType.Chaussures)
-                {
-                    trefles++;
-                }
-                else if (savedStuff.mytype == Stuff.StuffType.Haut)
-                {
-                    coeurs++;
-                }
-                else if (savedStuff.mytype == Stuff.StuffType.Arme)
-                {
-                    piques++;
-                }
-
-            }
-        }
-
-        if (ones == 4)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (twos == 4)
-        {
-            gold += 225;
-            goldText.text = gold.ToString();
-        }
-        if (threes == 4)
-        {
-            gold += 200;
-            goldText.text = gold.ToString();
-        }
-        if (fours == 4)
-        {
-            gold += 175;
-            goldText.text = gold.ToString();
-        }
-        if (fives == 4)
-        {
-            gold += 150;
-            goldText.text = gold.ToString();
-        }
-
-        if (carreaux == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (coeurs == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (piques == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (trefles == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
         }
     }
 }
