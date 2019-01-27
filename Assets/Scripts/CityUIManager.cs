@@ -19,6 +19,7 @@ public class CityUIManager : MonoBehaviour
     int RECELEUR = 2;
     int TAILLEUR = 3;
     int VOYANTE = 4;
+    int EMPTY = 5;
 
     public Image displayedPicto;
 
@@ -72,25 +73,26 @@ public class CityUIManager : MonoBehaviour
 
     public void UpdateEffectPicto(string _text)
     {
+        Debug.Log(_text);
         switch (_text)
         {
-            case "coursier":
+            case "Coursier":
                 displayedPicto.sprite = pictos[COURSIER];
                 break;
-            case "faussaire":
+            case "Faussaire":
                 displayedPicto.sprite = pictos[FAUSSAIRE];
                 break;
-            case "receleur":
+            case "Receleur":
                 displayedPicto.sprite = pictos[RECELEUR];
                 break;
-            case "tailleur":
+            case "Tailleur":
                 displayedPicto.sprite = pictos[TAILLEUR];
                 break;
-            case "voyante":
+            case "Voyante":
                 displayedPicto.sprite = pictos[VOYANTE];
                 break;
             default:
-                displayedPicto.sprite = null;
+                displayedPicto.sprite = pictos[EMPTY];
                 break;
         }
     }

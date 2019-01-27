@@ -312,6 +312,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a610c234fb668174ca7f94ffcddff2a8, type: 3}
   - {fileID: 21300000, guid: b76652dec1ce99d499af6957c1fb8d86, type: 3}
   - {fileID: 21300000, guid: 3a8afd283e371ef46a2946fb38711077, type: 3}
+  - {fileID: 21300000, guid: 17791724a88707245ae2172bd5222368, type: 3}
   displayedPicto: {fileID: 4156849268310476890}
 --- !u!114 &1539323265
 MonoBehaviour:
