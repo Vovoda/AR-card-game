@@ -3605,6 +3605,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bottomText: {fileID: 0}
   sideText: {fileID: 0}
+  player: {fileID: 0}
+  spriteObject: {fileID: 0}
+  casque: {fileID: 0}
+  chaussures: {fileID: 0}
+  haut: {fileID: 0}
+  armes: {fileID: 0}
+  listCity:
+  - {fileID: 0}
 --- !u!4 &1280889517
 Transform:
   m_ObjectHideFlags: 0

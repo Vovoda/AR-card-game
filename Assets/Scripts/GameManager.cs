@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject armes;
 
     //Database
+
     private Stuff[] listStuff;
     private City[] listCity;
 
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeBottomTextPosition(Vector3 position)
     {
-        bottomText.transform.position = position; 
+        bottomText.transform.position = position;
     }
 
     public void ChangeSideTextPosition(Vector3 position)
