@@ -50,13 +50,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.rotation.eulerAngles.y > 60 && player.transform.rotation.eulerAngles.y < 120)
+        if(gameStep == State.Travelling)
         {
-            Debug.Log("Gauche");
-        }
-        else if (player.transform.rotation.eulerAngles.y < 300 && player.transform.rotation.eulerAngles.y > 240)
-        {
-            Debug.Log("Droite");
+            if (player.transform.rotation.eulerAngles.y > 60 && player.transform.rotation.eulerAngles.y < 120)
+            {
+                Debug.Log("Gauche");
+            }
+            else if (player.transform.rotation.eulerAngles.y < 300 && player.transform.rotation.eulerAngles.y > 240)
+            {
+                Debug.Log("Droite");
+            }
         }
     }
 
