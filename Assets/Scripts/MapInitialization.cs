@@ -6,7 +6,7 @@ using Vuforia;
 
 public class MapInitialization : MonoBehaviour
 {
-    public int mapSize = 14;
+    public int mapSize = 7;
     List<string> atoutsId;
 
     Map map;
@@ -50,16 +50,16 @@ public class MapInitialization : MonoBehaviour
             //The list of names of atout is complete, let's start transforming it into the map
             map = new Map(QuickCities(atoutsId), mapSize);
             
-
             //create UI from map
             List<RectTransform> mapUIPositions = MapUIPositions(map);
 
             //stop the loop
             isMapSetUp = true;
+            GameManager.instance.MapComplete();
         }
         
         //Temporary testing
-        if (Input.GetKeyDown("l"))
+        /*if (Input.GetKeyDown("l"))
         {
             TurnLeft();
         }
@@ -70,7 +70,7 @@ public class MapInitialization : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             map.curCity = null;
-        }
+        }*/
     }
 
     public static List<List<City>> FillCityList(int initialRowSize, int totalNumberOfCities, int numberOfRows, List<City> initialList)
@@ -104,7 +104,6 @@ public class MapInitialization : MonoBehaviour
         }
         return finalList;
     }
-
 
     public static City QuickCity(string s, int i)
     {

@@ -118,5 +118,9 @@ public class Stuff : Card, ITrackableEventHandler
         GameManager.instance.SetBottomText("");
         GameManager.instance.SetSideText("");
         GameManager.instance.SetSpriteObject(null);
+        if (estimating)
+        {
+            GameManager.instance.HideBourse();
+        }
     }
 }

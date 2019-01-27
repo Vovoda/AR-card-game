@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject haut;
     [SerializeField] private GameObject armes;
     [SerializeField] private GameObject bourse;
+    private enum State { ConstructingMap, Travelling, Selling, CalculatingPoints};
+    private State gameStep;
 
     //Database
     private Stuff[] listStuff;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentCity = new City("test", "voila", 50, 50, 50, 50);
+        gameStep = State.ConstructingMap;
     }
 
     // Update is called once per frame
@@ -121,7 +124,7 @@ public class GameManager : MonoBehaviour
     {
         float estimatedPrice = currentStuff.Price * currentCity.GetTypePercentage(currentStuff.MyType.ToString()) / 100;
         bourse.SetActive(true);
-        bourse.transform.GetChild(1).GetComponent<Text>().text = estimatedPrice.ToString();
+        bourse.transform.GetChild(1).GetComponent<Text>().text = estimatedPrice.ToString() + "G";
     }
 
     public void ChangeBoursePosition(Vector3 position)
@@ -132,5 +135,11 @@ public class GameManager : MonoBehaviour
     public void HideBourse()
     {
         bourse.SetActive(false);
+    }
+
+    public void MapComplete()
+    {
+        gameStep = State.Travelling;
+        Debug.Log("MapComplete");
     }
 }
