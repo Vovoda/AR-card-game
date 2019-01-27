@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentCity = new City("test", "voila", 50, 50, 50, 50);
+    
         gameStep = Step.ConstructingMap;
         gameStep = Step.Travelling;
     }
@@ -118,14 +118,14 @@ public class GameManager : MonoBehaviour
 
     public void SellStuff(Stuff currentStuff)
     {
-        gold += (currentStuff.Price * currentCity.GetTypePercentage(currentStuff.MyType.ToString()) / 100);
+        gold += (currentStuff.Price * mapInitializer.getCurCity().GetTypePercentage(currentStuff.MyType.ToString()) / 100);
 
         goldText.text = gold.ToString();
     }
 
     public void EstimateStuffPrice(Stuff currentStuff)
     {
-        float estimatedPrice = currentStuff.Price * currentCity.GetTypePercentage(currentStuff.MyType.ToString()) / 100;
+        float estimatedPrice = currentStuff.Price * mapInitializer.getCurCity().GetTypePercentage(currentStuff.MyType.ToString()) / 100;
         bourse.SetActive(true);
         bourse.transform.GetChild(1).GetComponent<Text>().text = estimatedPrice.ToString() + "G";
     }
