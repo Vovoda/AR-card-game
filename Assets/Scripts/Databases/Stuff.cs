@@ -13,7 +13,7 @@ public class Stuff : Card, ITrackableEventHandler
     public enum State { Sold, Equipped, None, Counted};
     [SerializeField] public State state;
     private bool isSeen = false;
-    private float widthCameraPercentageSell = 0.3f;
+    private float widthCameraPercentageSell = 0.5f;
     private float heightCameraPercentageSell = 0.7f;
     private bool selling = false;
     private bool estimating = false;
@@ -51,7 +51,7 @@ public class Stuff : Card, ITrackableEventHandler
                 currentTime = 0;
                 selling = true;
             }
-            if (!selling && positionInScreen.y > 0 && positionInScreen.y < (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
+            if (!selling && positionInScreen.y < (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
             {
                 GameManager.instance.EstimateStuffPrice(this);
                 //GameManager.instance.ChangeBoursePosition(Camera.main.WorldToScreenPoint(new Vector3(this.transform.position.x, this.transform.position.y, 0)));
