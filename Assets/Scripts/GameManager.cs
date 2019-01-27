@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject haut;
     [SerializeField] private GameObject armes;
     [SerializeField] private GameObject bourse;
+    [SerializeField] private GameObject infos;
+
     private bool canTurn = true;
     public enum Step { ConstructingMap, Travelling, Selling, CalculatingPoints };
     public Step gameStep;
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
     
         gameStep = Step.ConstructingMap;
         gameStep = Step.Travelling;
+        infos.SetActive(false);
     }
 
     // Update is called once per frame
@@ -143,6 +146,7 @@ public class GameManager : MonoBehaviour
     public void MapComplete()
     {
         gameStep = Step.Travelling;
+        infos.SetActive(true);
         Debug.Log("MapComplete");
     }
 
