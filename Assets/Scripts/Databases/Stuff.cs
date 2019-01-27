@@ -15,7 +15,8 @@ public class Stuff : Card, ITrackableEventHandler
     private bool isSeen = false;
     private float widthCameraPercentageSell = 0.3f;
     private float heightCameraPercentageSell = 0.7f;
-    private bool test = false;
+    private bool selling = false;
+    private bool estimating = false;
     private float currentTime;
     private float maxTime=2;
 
@@ -45,17 +46,24 @@ public class Stuff : Card, ITrackableEventHandler
             GameManager.instance.ChangeSpriteObjectPosition(transform.position);
             DisplayCharacterictics();
             Vector3 positionInScreen = Camera.main.WorldToScreenPoint(this.transform.position);
-            if (!test && positionInScreen.y > (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
+            if (!selling && positionInScreen.y > (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
             {
                 currentTime = 0;
-                test = true;
+                selling = true;
             }
-            if (!test && positionInScreen.y > 0 && positionInScreen.y < (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
+            if (!selling && positionInScreen.y > 0 && positionInScreen.y < (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
             {
-                Debug.Log("coucou");
+                GameManager.instance.EstimateStuffPrice(this);
+                //GameManager.instance.ChangeBoursePosition(Camera.main.WorldToScreenPoint(new Vector3(this.transform.position.x, this.transform.position.y, 0)));
+                estimating = true;
+            }
+            if(estimating && positionInScreen.x > (widthCameraPercentageSell * Screen.width))
+            {
+                estimating = false;
+                GameManager.instance.HideBourse();
             }
         }
-        if (test && state!=State.Sold)
+        if (selling && state!=State.Sold)
         {
             currentTime += Time.deltaTime;
             if (currentTime > maxTime)
@@ -66,8 +74,10 @@ public class Stuff : Card, ITrackableEventHandler
                     GameManager.instance.SetBottomText("Vendu");
                     GameManager.instance.SellStuff(this);
                     state = State.Sold;
+                    estimating = false;
+                    GameManager.instance.HideBourse();
                 }
-                test = false;
+                selling = false;
             }
         }
     }
