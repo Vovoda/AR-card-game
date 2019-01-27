@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject sideText;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject spriteObject;
+    [SerializeField] private MapInitialization mapInitializer;
     [SerializeField] private GameObject casque;
     [SerializeField] private GameObject chaussures;
     [SerializeField] private GameObject haut;
