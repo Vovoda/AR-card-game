@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject haut;
     [SerializeField] private GameObject armes;
 
+    //Database
+    private Stuff[] listStuff;
+    private City[] listCity;
 
     public static GameManager instance = null;
 
@@ -76,5 +79,10 @@ public class GameManager : MonoBehaviour
     public void ChangeSideTextPosition(Vector3 position)
     {
         sideText.transform.position = position;
+    }
+
+    private void InitData()
+    {
+        listStuff[0] = new Stuff()
     }
 }

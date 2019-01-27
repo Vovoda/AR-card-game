@@ -9,6 +9,13 @@ public class Stuff : Card
     [SerializeField] private int number;
     [SerializeField] private int price;
 
+    public Stuff(StuffType newType, int newNumber, int newPrice)
+    {
+        myType = newType;
+        number = newNumber;
+        price = newPrice;
+    }
+
     public void DisplayCharacterictics()
     {
         string textToDisplay = CardName + "\n " + myType.ToString() + "\n" + price + " G";
