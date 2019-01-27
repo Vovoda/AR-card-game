@@ -20,6 +20,16 @@ public class GameManager : MonoBehaviour
     public enum Step { ConstructingMap, Travelling, Selling, CalculatingPoints };
     public Step gameStep;
 
+    int ones = 0;
+    int twos = 0;
+    int threes = 0;
+    int fours = 0;
+    int fives = 0;
+    int carreaux = 0;
+    int piques = 0;
+    int trefles = 0;
+    int coeurs = 0;
+
     //Database
     private Stuff[] listStuff;
     private City[] listCity;
@@ -47,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         currentCity = new City("test", "voila", 50, 50, 50, 50);
         gameStep = Step.ConstructingMap;
+        gameStep = Step.Travelling;
     }
 
     // Update is called once per frame
@@ -64,6 +75,10 @@ public class GameManager : MonoBehaviour
                 mapInitializer.TurnLeft();
                 canTurn = false;
             }
+        }
+        else if (gameStep == Step.CalculatingPoints)
+        {
+            EndGameScore();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -133,18 +148,21 @@ public class GameManager : MonoBehaviour
 
     public void CharacterFace()
     {
+        Debug.Log("coclco");
         if (gameStep == Step.Travelling)
         {
+            Debug.Log(mapInitializer.CurrentLevel);
             if (mapInitializer.CurrentLevel <6)
             {
                 mapInitializer.gameObject.SetActive(false);
                 gameStep = Step.Selling;
                 canTurn = true;
             }
-            if (mapInitializer.CurrentLevel == 6)
-            {
-                EndGameScore();
-            }
+        }
+        if (mapInitializer.CurrentLevel == 6)
+        {
+            Debug.Log("Score");
+            gameStep = Step.CalculatingPoints;
         }
     }
 
@@ -156,7 +174,7 @@ public class GameManager : MonoBehaviour
             {
                 mapInitializer.CurrentLevel++;
                 currentCity = new City("End", null, 100, 100, 100, 100);
-                Debug.Log("EndGame");
+                Debug.Log("EndGame " + mapInitializer.CurrentLevel);
             }
             else if(mapInitializer.CurrentLevel < 6)
             {
@@ -169,15 +187,6 @@ public class GameManager : MonoBehaviour
 
     public void EndGameScore()
     {
-        int ones = 0;
-        int twos = 0;
-        int threes = 0;
-        int fours = 0;
-        int fives = 0;
-        int carreaux = 0;
-        int piques = 0;
-        int trefles = 0;
-        int coeurs = 0;
 
         // Get the Vuforia StateManager
         StateManager sm = TrackerManager.Instance.GetStateManager();
@@ -191,93 +200,105 @@ public class GameManager : MonoBehaviour
         foreach (TrackableBehaviour tb in activeTrackables)
         {
             Stuff savedStuff = tb.transform.GetComponent<Stuff>();
-            gold += savedStuff.Price;
-            goldText.text = gold.ToString();
-            //Check number
-            if (savedStuff.Number == 1)
-            {
-                ones++;
-            }
-            else if (savedStuff.Number == 2)
-            {
-                twos++;
-            }
-            else if (savedStuff.Number == 3)
-            {
-                threes++;
-            }
-            else if (savedStuff.Number == 4)
-            {
-                fours++;
-            }
-            else if (savedStuff.Number == 5)
-            {
-                fives++;
-            }
-            //Check Figure
-            if (savedStuff.MyType == Stuff.StuffType.Casque)
-            {
-                carreaux++;
-            }
-            else if (savedStuff.MyType == Stuff.StuffType.Chaussures)
-            {
-                trefles++;
-            }
-            else if (savedStuff.MyType == Stuff.StuffType.Haut)
-            {
-                coeurs++;
-            }
-            else if (savedStuff.MyType == Stuff.StuffType.Arme)
-            {
-                piques++;
-            }
-        }
+            if (savedStuff != null && savedStuff.state != Stuff.State.Counted) {
+                savedStuff.state = Stuff.State.Counted;
+                gold += savedStuff.Price;
+                goldText.text = gold.ToString();
+                //Check number
+                if (savedStuff.Number == 1)
+                {
+                    ones++;
+                }
+                else if (savedStuff.Number == 2)
+                {
+                    twos++;
+                }
+                else if (savedStuff.Number == 3)
+                {
+                    threes++;
+                }
+                else if (savedStuff.Number == 4)
+                {
+                    fours++;
+                }
+                else if (savedStuff.Number == 5)
+                {
+                    fives++;
+                }
+                //Check Figure
+                if (savedStuff.MyType == Stuff.StuffType.Casque)
+                {
+                    carreaux++;
+                }
+                else if (savedStuff.MyType == Stuff.StuffType.Chaussures)
+                {
+                    trefles++;
+                }
+                else if (savedStuff.MyType == Stuff.StuffType.Haut)
+                {
+                    coeurs++;
+                }
+                else if (savedStuff.MyType == Stuff.StuffType.Arme)
+                {
+                    piques++;
+                }
 
-        if (ones == 4)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (twos == 4)
-        {
-            gold += 225;
-            goldText.text = gold.ToString();
-        }
-        if (threes == 4)
-        {
-            gold += 200;
-            goldText.text = gold.ToString();
-        }
-        if (fours == 4)
-        {
-            gold += 175;
-            goldText.text = gold.ToString();
-        }
-        if (fives == 4)
-        {
-            gold += 150;
-            goldText.text = gold.ToString();
-        }
+                if (ones == 4)
+                {
+                    ones++;
+                    gold += 250;
+                    goldText.text = gold.ToString();
+                }
+                if (twos == 4)
+                {
+                    twos++;
+                    gold += 225;
+                    goldText.text = gold.ToString();
+                }
+                if (threes == 4)
+                {
+                    threes++;
+                    gold += 200;
+                    goldText.text = gold.ToString();
+                }
+                if (fours == 4)
+                {
+                    fours++;
+                    gold += 175;
+                    goldText.text = gold.ToString();
+                }
+                if (fives == 4)
+                {
+                    fives++;
+                    gold += 150;
+                    goldText.text = gold.ToString();
+                }
 
-        if (carreaux == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (coeurs == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (piques == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
-        }
-        if (trefles == 5)
-        {
-            gold += 250;
-            goldText.text = gold.ToString();
+                if (carreaux == 5)
+                {
+                    carreaux++;
+                    gold += 250;
+                    goldText.text = gold.ToString();
+                }
+                if (coeurs == 5)
+                {
+                    coeurs++;
+                    gold += 250;
+                    goldText.text = gold.ToString();
+                }
+                if (piques == 5)
+                {
+                    piques++;
+                    gold += 250;
+                    goldText.text = gold.ToString();
+                }
+                if (trefles == 5)
+                {
+                    trefles++;
+                    gold += 250;
+                    goldText.text = gold.ToString();
+                }
+            }
         }
     }
 }

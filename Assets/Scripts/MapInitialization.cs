@@ -6,7 +6,7 @@ using Vuforia;
 
 public class MapInitialization : MonoBehaviour
 {
-    public int mapSize = 7;
+    public int mapSize = 14;
     List<string> atoutsId;
     private int currentLevel;
 

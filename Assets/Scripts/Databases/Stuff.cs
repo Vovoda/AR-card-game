@@ -10,8 +10,8 @@ public class Stuff : Card, ITrackableEventHandler
     [SerializeField] StuffType myType;
     [SerializeField] private int number;
     [SerializeField] private int price;
-    private enum State { Sold, Equipped, None};
-    [SerializeField] State state;
+    public enum State { Sold, Equipped, None, Counted};
+    [SerializeField] public State state;
     private bool isSeen = false;
     private float widthCameraPercentageSell = 0.3f;
     private float heightCameraPercentageSell = 0.7f;

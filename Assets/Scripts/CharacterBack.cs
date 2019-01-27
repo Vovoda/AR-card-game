@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 public class CharacterBack : MonoBehaviour, ITrackableEventHandler
 {
+
+    bool isSeen=false;
+
     private TrackableBehaviour trackableBehaviour;
 
     void Start()
@@ -12,6 +15,11 @@ public class CharacterBack : MonoBehaviour, ITrackableEventHandler
         trackableBehaviour = GetComponent<TrackableBehaviour>();
         if (trackableBehaviour)
             trackableBehaviour.RegisterTrackableEventHandler(this);
+    }
+
+    void Update()
+    {
+        //this.transform.position = 
     }
 
     public void OnTrackableStateChanged(
@@ -29,10 +37,11 @@ public class CharacterBack : MonoBehaviour, ITrackableEventHandler
     private void OnTrackingFound()
     {
         GameManager.instance.CharacterBack();
+        isSeen = true;
     }
 
     private void onTrackingLost()
     {
-
+        isSeen = false;
     }
 }
