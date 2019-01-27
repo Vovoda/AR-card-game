@@ -56,19 +56,19 @@ public class CityUIManager : MonoBehaviour
 
     public void UpdateValueCarreau(int _value)
     {
-        valueCarreau.text = _value + " ♦";
+        valueCarreau.text = _value + "";// ♦";
     }
     public void UpdateValuePique(int _value)
     {
-        valuePique.text = _value + " ♠";
+        valuePique.text = _value + "";// ♠";
     }
     public void UpdateValueTrefle(int _value)
     {
-        valueTrefle.text = _value + " ♣";
+        valueTrefle.text = _value + "";// ♣";
     }
     public void UpdateValueCoeur(int _value)
     {
-        valueCoeur.text = _value + " ♥";
+        valueCoeur.text = _value + "";// ♥";
     }
 
     public void UpdateEffectPicto(string _text)
