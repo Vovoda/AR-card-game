@@ -55,10 +55,12 @@ public class GameManager : MonoBehaviour
             if (player.transform.rotation.eulerAngles.y > 60 && player.transform.rotation.eulerAngles.y < 120)
             {
                 Debug.Log("Gauche");
+                mapInitializer.TurnLeft();
             }
             else if (player.transform.rotation.eulerAngles.y < 300 && player.transform.rotation.eulerAngles.y > 240)
             {
                 Debug.Log("Droite");
+                mapInitializer.TurnRight();
             }
         }
     }
