@@ -2,30 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+public class Map
 {
     List<List<City>> rowOfCities;
     int totalSize;
 
-
+    public List<List<City>> RowOfCities { get => rowOfCities; set => rowOfCities = value; }
 
     public Map(List<List<City>> _rowOfCities)
     {
         rowOfCities = _rowOfCities;
+        SetCitiesChildren();
     }
 
     public Map(List<City> _cities, int _size)
     {
-        List<City> tempList;
         switch (_size)
         {
             case 4:
-
+                rowOfCities = MapInitialization.FillCityList(1, 4, 3, _cities);
                 break;
+
+            case 14:
+                rowOfCities = MapInitialization.FillCityList(2, 14, 5, _cities);
+                break;
+
             default:
+                Debug.Log("Not supported number of cities, try with 4 and 14");
                 break;
         }
+
+        SetCitiesChildren();
     }
+
     
     void Start()
     {

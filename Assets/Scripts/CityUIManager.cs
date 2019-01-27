@@ -12,7 +12,22 @@ public class CityUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        /*List<List<int>> truc = new List<List<int>>();
+        int a = 3;
+        List<int> truc2 = new List<int>();
+        List<int> truc3 = new List<int>();
+
+        truc2.Add(a);
+        truc.Add(truc2);
+        a = 4;
+        Debug.Log(truc[0][0]);
+
+        truc2.Add(7);
+        Debug.Log(truc[0][0]);
+        Debug.Log(truc[0][1]);*/
+
+        List<List<City>> hola = new List<List<City>>();
+        //hola = MapInitialization.FillCityList(2, 14, 5, null);
     }
 
     // Update is called once per frame

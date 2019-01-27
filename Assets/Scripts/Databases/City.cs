@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class City : Card
+public class City
 {
     [SerializeField] private string cityEffect;
     [SerializeField] private int helmetPercentage, topPercentage,bottomPercentage, weaponPercentage;
     private City leftCity;
     private City rightCity;
 
+    private string cardName;
+
     public City LeftCity { get => leftCity; set => leftCity = value; }
     public City RightCity { get => rightCity; set => rightCity = value; }
 
     public City(string newName, string newEffect, int newHelmet, int newTop, int newBottom, int newWeapon)
     {
-        CardName = newName;
+        cardName = newName;
         cityEffect = newEffect;
         helmetPercentage = newHelmet;
         topPercentage = newTop;
@@ -39,6 +41,9 @@ public class City : Card
         else if(stuff == "Arme")
         {
             return weaponPercentage;
+        } else
+        {
+            return -1;
         }
     }
 
