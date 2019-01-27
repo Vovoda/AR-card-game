@@ -7,8 +7,6 @@ public class CharacterBack : MonoBehaviour, ITrackableEventHandler
 {
     private TrackableBehaviour trackableBehaviour;
 
-
-
     void Start()
     {
         trackableBehaviour = GetComponent<TrackableBehaviour>();

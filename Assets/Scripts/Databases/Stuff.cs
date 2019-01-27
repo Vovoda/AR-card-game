@@ -38,7 +38,7 @@ public class Stuff : Card, ITrackableEventHandler
 
     void Update()
     {
-        if (isSeen && state == State.None)
+        if (isSeen && GameManager.instance.gameStep == GameManager.Step.Selling && state == State.None)
         {
             GameManager.instance.ChangeBottomTextPosition(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z));
             GameManager.instance.ChangeSideTextPosition(new Vector3(transform.position.x + 0.6f, transform.position.y, transform.position.z));

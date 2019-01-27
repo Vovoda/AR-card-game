@@ -6,8 +6,9 @@ using Vuforia;
 
 public class MapInitialization : MonoBehaviour
 {
-    public int mapSize = 7;
+    public int mapSize = 14;
     List<string> atoutsId;
+    private int currentLevel;
 
     Map map;
 
@@ -20,6 +21,7 @@ public class MapInitialization : MonoBehaviour
     {
         atoutsId = new List<string>();
         isMapSetUp = false;
+        currentLevel = 0;
     }
 
     void Update()
@@ -58,18 +60,11 @@ public class MapInitialization : MonoBehaviour
         }
         
         //Temporary testing
-        /*if (Input.GetKeyDown("l"))
-        {
-            TurnLeft();
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            TurnRight();
-        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             map.curCity = null;
-        }*/
+        }
     }
 
     public static List<List<City>> FillCityList(int initialRowSize, int totalNumberOfCities, int numberOfRows, List<City> initialList)
@@ -155,6 +150,7 @@ public class MapInitialization : MonoBehaviour
     {
         if (map.curCity == null)
         {
+            currentLevel++;
             if (map.RowOfCities[0].Count == 2)
             {
                 map.curCity = map.RowOfCities[0][1];
@@ -169,6 +165,7 @@ public class MapInitialization : MonoBehaviour
             map.curCity.CityUI.SetSelected(false);
             if (map.curCity.RightCity != null)
             {
+                currentLevel++;
                 map.curCity = map.curCity.RightCity;
             }
         }
@@ -179,6 +176,7 @@ public class MapInitialization : MonoBehaviour
     {
         if (map.curCity == null)
         {
+            currentLevel++;
             map.curCity = map.RowOfCities[0][0];
         }
         else
@@ -186,6 +184,7 @@ public class MapInitialization : MonoBehaviour
             map.curCity.CityUI.SetSelected(false);
             if (map.curCity.LeftCity != null)
             {
+                currentLevel++;
                 map.curCity = map.curCity.LeftCity;
             }
         }

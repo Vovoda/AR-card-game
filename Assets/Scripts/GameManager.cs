@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject haut;
     [SerializeField] private GameObject armes;
     [SerializeField] private GameObject bourse;
-    private enum State { ConstructingMap, Travelling, Selling, CalculatingPoints};
-    private State gameStep;
+    private bool canTurn = true;
+    public enum Step { ConstructingMap, Travelling, Selling, CalculatingPoints};
+    public Step gameStep;
 
     //Database
     private Stuff[] listStuff;
@@ -44,24 +45,28 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentCity = new City("test", "voila", 50, 50, 50, 50);
-        gameStep = State.ConstructingMap;
+        gameStep = Step.ConstructingMap;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameStep == State.Travelling)
+        if(gameStep == Step.Travelling && canTurn)
         {
-            if (player.transform.rotation.eulerAngles.y > 60 && player.transform.rotation.eulerAngles.y < 120)
+            if (player.transform.rotation.eulerAngles.y > 80 && player.transform.rotation.eulerAngles.y < 100 && Input.GetKeyDown("r"))
             {
-                Debug.Log("Gauche");
-                mapInitializer.TurnLeft();
-            }
-            else if (player.transform.rotation.eulerAngles.y < 300 && player.transform.rotation.eulerAngles.y > 240)
-            {
-                Debug.Log("Droite");
                 mapInitializer.TurnRight();
+                canTurn = false;
             }
+            else if (player.transform.rotation.eulerAngles.y < 280 && player.transform.rotation.eulerAngles.y > 260 && && Input.GetKeyDown("l"))
+            {
+                mapInitializer.TurnLeft();
+                canTurn = false;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 
@@ -94,34 +99,11 @@ public class GameManager : MonoBehaviour
     {
         spriteObject.transform.position = position;
     }
-    public void InitData()
-    {
-        listStuff[0] = new Stuff(Stuff.StuffType.Casque, 1, 100);
-        listStuff[1] = new Stuff(Stuff.StuffType.Casque, 2, 200);
-        listStuff[2] = new Stuff(Stuff.StuffType.Casque, 3, 300);
-        listStuff[3] = new Stuff(Stuff.StuffType.Casque, 4, 400);
-        listStuff[4] = new Stuff(Stuff.StuffType.Casque, 5, 500);
-        listStuff[5] = new Stuff(Stuff.StuffType.Chaussures, 1, 100);
-        listStuff[6] = new Stuff(Stuff.StuffType.Chaussures, 2, 200);
-        listStuff[7] = new Stuff(Stuff.StuffType.Chaussures, 3, 300);
-        listStuff[8] = new Stuff(Stuff.StuffType.Chaussures, 4, 400);
-        listStuff[9] = new Stuff(Stuff.StuffType.Chaussures, 5, 500);
-        listStuff[10] = new Stuff(Stuff.StuffType.Haut, 1, 100);
-        listStuff[11] = new Stuff(Stuff.StuffType.Haut, 2, 200);
-        listStuff[12] = new Stuff(Stuff.StuffType.Haut, 3, 300);
-        listStuff[13] = new Stuff(Stuff.StuffType.Haut, 4, 400);
-        listStuff[14] = new Stuff(Stuff.StuffType.Haut, 5, 500);
-        listStuff[15] = new Stuff(Stuff.StuffType.Arme, 1, 100);
-        listStuff[16] = new Stuff(Stuff.StuffType.Arme, 2, 200);
-        listStuff[17] = new Stuff(Stuff.StuffType.Arme, 3, 300);
-        listStuff[18] = new Stuff(Stuff.StuffType.Arme, 4, 400);
-        listStuff[19] = new Stuff(Stuff.StuffType.Arme, 5, 500);
-    }
 
     public void SellStuff(Stuff currentStuff)
     {
         gold += (currentStuff.Price * currentCity.GetTypePercentage(currentStuff.MyType.ToString()) / 100);
-        
+
         goldText.text = gold.ToString();
     }
 
@@ -144,24 +126,27 @@ public class GameManager : MonoBehaviour
 
     public void MapComplete()
     {
-        gameStep = State.Travelling;
+        gameStep = Step.Travelling;
         Debug.Log("MapComplete");
     }
 
     public void CharacterFace()
     {
-        if(gameStep == State.Travelling)
+        if(gameStep == Step.Travelling)
         {
-            gameStep = State.Selling;
+            mapInitializer.gameObject.SetActive(false);
+            gameStep = Step.Selling;
             Debug.Log("Selling");
+            canTurn = true;
         }
     }
 
     public void CharacterBack()
     {
-        if (gameStep == State.Selling)
+        if (gameStep == Step.Selling)
         {
-            gameStep = State.Travelling;
+            mapInitializer.gameObject.SetActive(true);
+            gameStep = Step.Travelling;
             Debug.Log("Travelling");
         }
     }
