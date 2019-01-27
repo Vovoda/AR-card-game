@@ -15,6 +15,11 @@ public class City
     public CityUIManager CityUI { get => cityUI; set => cityUI = value; }
     public City LeftCity { get => leftCity; set => leftCity = value; }
     public City RightCity { get => rightCity; set => rightCity = value; }
+    public int HelmetPercentage { get => helmetPercentage; set => helmetPercentage = value; }
+    public int TopPercentage { get => topPercentage; set => topPercentage = value; }
+    public int BottomPercentage { get => bottomPercentage; set => bottomPercentage = value; }
+    public int WeaponPercentage { get => weaponPercentage; set => weaponPercentage = value; }
+    public string CityEffect { get => cityEffect; set => cityEffect = value; }
 
     public City(string newName, string newEffect, int newHelmet, int newTop, int newBottom, int newWeapon)
     {

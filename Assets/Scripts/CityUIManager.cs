@@ -11,6 +11,17 @@ public class CityUIManager : MonoBehaviour
     public Text valueCoeur;
 
     public Image selected;
+
+    public Sprite[] pictos;
+
+    int COURSIER = 0;
+    int FAUSSAIRE = 1;
+    int RECELEUR = 2;
+    int TAILLEUR = 3;
+    int VOYANTE = 4;
+
+    public Image displayedPicto;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +44,13 @@ public class CityUIManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void UpdateFromCity(City city)
     {
-        
+        UpdateEffectPicto(city.CityEffect);
+        UpdateValueCarreau(city.HelmetPercentage);
+        UpdateValueCoeur(city.TopPercentage);
+        UpdateValuePique(city.WeaponPercentage);
+        UpdateValueTrefle(city.BottomPercentage);
     }
 
     public void UpdateValueCarreau(int _value)
@@ -53,6 +68,31 @@ public class CityUIManager : MonoBehaviour
     public void UpdateValueCoeur(int _value)
     {
         valueCoeur.text = _value + " ♥";
+    }
+
+    public void UpdateEffectPicto(string _text)
+    {
+        switch (_text)
+        {
+            case "coursier":
+                displayedPicto.sprite = pictos[COURSIER];
+                break;
+            case "faussaire":
+                displayedPicto.sprite = pictos[FAUSSAIRE];
+                break;
+            case "receleur":
+                displayedPicto.sprite = pictos[RECELEUR];
+                break;
+            case "tailleur":
+                displayedPicto.sprite = pictos[TAILLEUR];
+                break;
+            case "voyante":
+                displayedPicto.sprite = pictos[VOYANTE];
+                break;
+            default:
+                displayedPicto.sprite = null;
+                break;
+        }
     }
 
     public void SetSelected(bool set)

@@ -6,7 +6,7 @@ using Vuforia;
 
 public class MapInitialization : MonoBehaviour
 {
-    public int mapSize = 14;
+    public int mapSize = 7;
     List<string> atoutsId;
     private int currentLevel;
 
@@ -17,13 +17,15 @@ public class MapInitialization : MonoBehaviour
 
     public bool isMapSetUp;
 
+    Dictionary<string, AtoutData.CityStruct> cityDico = new Dictionary<string, AtoutData.CityStruct>();
+
     public int CurrentLevel { get => currentLevel; set => currentLevel = value; }
 
-    private void Start()
+    void Start()
     {
         atoutsId = new List<string>();
         isMapSetUp = false;
-        currentLevel = 0;
+        cityDico = AtoutData.InitAtoutData();
     }
 
     void Update()
@@ -41,7 +43,9 @@ public class MapInitialization : MonoBehaviour
             // Iterate through the list of active trackables
             foreach (TrackableBehaviour tb in activeTrackables)
             {
-                if(!atoutsId.Contains(tb.TrackableName))
+
+                //Debug.Log("Added : " + tb.TrackableName);
+                if (!atoutsId.Contains(tb.TrackableName) && tb.TrackableName.Contains("atouts"))
                 {
                     atoutsId.Add(tb.TrackableName);
                     Debug.Log("Added : " + tb.TrackableName);
@@ -51,8 +55,8 @@ public class MapInitialization : MonoBehaviour
         else if (isMapSetUp == false)
         {
             //The list of names of atout is complete, let's start transforming it into the map
-            map = new Map(QuickCities(atoutsId), mapSize);
-            
+            map = new Map(RealCities(atoutsId), mapSize);
+
             //create UI from map
             List<RectTransform> mapUIPositions = MapUIPositions(map);
 
@@ -60,7 +64,7 @@ public class MapInitialization : MonoBehaviour
             isMapSetUp = true;
             GameManager.instance.MapComplete();
         }
-        
+
         //Temporary testing
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -96,7 +100,7 @@ public class MapInitialization : MonoBehaviour
                 }
                 finalList.Add(tempList);
             }
-            
+
         }
         return finalList;
     }
@@ -109,9 +113,26 @@ public class MapInitialization : MonoBehaviour
     public static List<City> QuickCities(List<string> s)
     {
         List<City> cities = new List<City>();
-        for (int i = 0; i < s.Count; i ++)
+        for (int i = 0; i < s.Count; i++)
         {
             cities.Add(QuickCity(s[i], i));
+        }
+
+        return cities;
+    }
+
+    public City RealCity(string s)
+    {
+        AtoutData.CityStruct cityData = cityDico[s];
+        return new City(s, cityData.effect, cityData.carreauValue, cityData.coeurValue, cityData.trefleValue, cityData.piqueValue);
+    }
+
+    public List<City> RealCities(List<string> s)
+    {
+        List<City> cities = new List<City>();
+        for (int i = 0; i < s.Count; i++)
+        {
+            cities.Add(RealCity(s[i]));
         }
 
         return cities;
@@ -132,7 +153,7 @@ public class MapInitialization : MonoBehaviour
         for (int i = 0; i < map.RowOfCities.Count; i++)
         {
             double yPos = (map.RowOfCities.Count / 2.0 - i) * cityUIHeight;
-            
+
 
             for (int j = 0; j < map.RowOfCities[i].Count; j++)
             {
@@ -142,8 +163,9 @@ public class MapInitialization : MonoBehaviour
                 newCityUI.GetComponent<RectTransform>().localRotation = Quaternion.identity;
                 newCityUI.GetComponent<RectTransform>().sizeDelta = new Vector2(0, (float)cityUIHeight);
                 map.RowOfCities[i][j].CityUI = newCityUI.GetComponent<CityUIManager>();
+                map.RowOfCities[i][j].CityUI.UpdateFromCity(map.RowOfCities[i][j]);
             }
-            
+
         }
         return mapUIPositions;
     }
@@ -161,8 +183,9 @@ public class MapInitialization : MonoBehaviour
             {
                 map.curCity = map.RowOfCities[0][0];
             }
-            
-        } else
+
+        }
+        else
         {
             map.curCity.CityUI.SetSelected(false);
             if (map.curCity.RightCity != null)
