@@ -9,6 +9,8 @@ public class CityUIManager : MonoBehaviour
     public Text valuePique;
     public Text valueTrefle;
     public Text valueCoeur;
+
+    public Image selected;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,5 +53,16 @@ public class CityUIManager : MonoBehaviour
     public void UpdateValueCoeur(int _value)
     {
         valueCoeur.text = _value + " ♥";
+    }
+
+    public void SetSelected(bool set)
+    {
+        if (set)
+        {
+            selected.enabled = true;
+        } else
+        {
+            selected.enabled = false;
+        }
     }
 }

@@ -6,11 +6,13 @@ public class City
 {
     [SerializeField] private string cityEffect;
     [SerializeField] private int helmetPercentage, topPercentage,bottomPercentage, weaponPercentage;
+    private CityUIManager cityUI;
     private City leftCity;
     private City rightCity;
 
     private string cardName;
 
+    public CityUIManager CityUI { get => cityUI; set => cityUI = value; }
     public City LeftCity { get => leftCity; set => leftCity = value; }
     public City RightCity { get => rightCity; set => rightCity = value; }
 

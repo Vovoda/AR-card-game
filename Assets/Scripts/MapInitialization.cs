@@ -57,6 +57,20 @@ public class MapInitialization : MonoBehaviour
             //stop the loop
             isMapSetUp = true;
         }
+        
+        //Temporary testing
+        if (Input.GetKeyDown("l"))
+        {
+            TurnLeft();
+        }
+        if (Input.GetKeyDown("r"))
+        {
+            TurnRight();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            map.curCity = null;
+        }
     }
 
     public static List<List<City>> FillCityList(int initialRowSize, int totalNumberOfCities, int numberOfRows, List<City> initialList)
@@ -132,9 +146,56 @@ public class MapInitialization : MonoBehaviour
                 newCityUI.GetComponent<RectTransform>().localPosition = new Vector3((float)xPos, (float)yPos);
                 newCityUI.GetComponent<RectTransform>().localRotation = Quaternion.identity;
                 newCityUI.GetComponent<RectTransform>().sizeDelta = new Vector2(0, (float)cityUIHeight);
+                map.RowOfCities[i][j].CityUI = newCityUI.GetComponent<CityUIManager>();
             }
             
         }
         return mapUIPositions;
+    }
+
+    public void TurnRight()
+    {
+        if (map.curCity == null)
+        {
+            if (map.RowOfCities[0].Count == 2)
+            {
+                map.curCity = map.RowOfCities[0][1];
+            }
+            else
+            {
+                map.curCity = map.RowOfCities[0][0];
+            }
+            
+        } else
+        {
+            map.curCity.CityUI.SetSelected(false);
+            if (map.curCity.RightCity != null)
+            {
+                map.curCity = map.curCity.RightCity;
+            }
+        }
+        map.curCity.CityUI.SetSelected(true);
+    }
+
+    public void TurnLeft()
+    {
+        if (map.curCity == null)
+        {
+            map.curCity = map.RowOfCities[0][0];
+        }
+        else
+        {
+            map.curCity.CityUI.SetSelected(false);
+            if (map.curCity.LeftCity != null)
+            {
+                map.curCity = map.curCity.LeftCity;
+            }
+        }
+        map.curCity.CityUI.SetSelected(true);
+    }
+
+    public City getCurCity()
+    {
+        return map.curCity;
     }
 }
