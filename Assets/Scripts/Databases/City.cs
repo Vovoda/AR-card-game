@@ -12,10 +12,14 @@ public class City : Card
     public City LeftCity { get => leftCity; set => leftCity = value; }
     public City RightCity { get => rightCity; set => rightCity = value; }
 
-    public City(string newName, string newEffect)
+    public City(string newName, string newEffect, int newHelmet, int newTop, int newBottom, int newWeapon)
     {
         CardName = newName;
         cityEffect = newEffect;
+        helmetPercentage = newHelmet;
+        topPercentage = newTop;
+        bottomPercentage = newBottom;
+        weaponPercentage = newWeapon;
     }
 
     // Start is called before the first frame update

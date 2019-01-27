@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stuff : Card
 {
-    enum StuffType {Casque, Chaussures, Haut, Arme};
+    public enum StuffType {Casque, Chaussures, Haut, Arme};
     [SerializeField] StuffType myType;
     [SerializeField] private int number;
     [SerializeField] private int price;

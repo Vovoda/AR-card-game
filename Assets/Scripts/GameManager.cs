@@ -15,9 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject armes;
 
     //Database
+   
     private Stuff[] listStuff;
     private City[] listCity;
-
+    
     public static GameManager instance = null;
 
     void Awake()
@@ -83,6 +84,28 @@ public class GameManager : MonoBehaviour
 
     private void InitData()
     {
-        listStuff[0] = new Stuff()
+        listStuff[0] = new Stuff(Stuff.StuffType.Casque, 1, 100);
+        listStuff[1] = new Stuff(Stuff.StuffType.Casque, 2, 200);
+        listStuff[2] = new Stuff(Stuff.StuffType.Casque, 3, 300);
+        listStuff[3] = new Stuff(Stuff.StuffType.Casque, 4, 400);
+        listStuff[4] = new Stuff(Stuff.StuffType.Casque, 5, 500);
+        listStuff[5] = new Stuff(Stuff.StuffType.Chaussures, 1, 100);
+        listStuff[6] = new Stuff(Stuff.StuffType.Chaussures, 2, 200);
+        listStuff[7] = new Stuff(Stuff.StuffType.Chaussures, 3, 300);
+        listStuff[8] = new Stuff(Stuff.StuffType.Chaussures, 4, 400);
+        listStuff[9] = new Stuff(Stuff.StuffType.Chaussures, 5, 500);
+        listStuff[10] = new Stuff(Stuff.StuffType.Haut, 1, 100);
+        listStuff[11] = new Stuff(Stuff.StuffType.Haut, 2, 200);
+        listStuff[12] = new Stuff(Stuff.StuffType.Haut, 3, 300);
+        listStuff[13] = new Stuff(Stuff.StuffType.Haut, 4, 400);
+        listStuff[14] = new Stuff(Stuff.StuffType.Haut, 5, 500);
+        listStuff[15] = new Stuff(Stuff.StuffType.Arme, 1, 100);
+        listStuff[16] = new Stuff(Stuff.StuffType.Arme, 2, 200);
+        listStuff[17] = new Stuff(Stuff.StuffType.Arme, 3, 300);
+        listStuff[18] = new Stuff(Stuff.StuffType.Arme, 4, 400);
+        listStuff[19] = new Stuff(Stuff.StuffType.Arme, 5, 500);
+
+
+
     }
 }
