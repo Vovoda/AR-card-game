@@ -22,6 +22,7 @@ public class Stuff : Card, ITrackableEventHandler
 
     public int Price { get => price; set => price = value; }
     public StuffType MyType { get => myType; set => myType = value; }
+    public global::System.Int32 Number { get => number; set => number = value; }
 
     public Stuff(StuffType newType, int newNumber, int newPrice)
     {
