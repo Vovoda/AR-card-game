@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using Vuforia;
-//Attach to the image tracker
-public class Test : MonoBehaviour, ITrackableEventHandler
+using System.Collections;
+using System.Collections.Generic;
+
+public class CharacterFace : MonoBehaviour,ITrackableEventHandler
 {
     private TrackableBehaviour trackableBehaviour;
+
+
+
     void Start()
     {
         trackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -22,15 +27,13 @@ public class Test : MonoBehaviour, ITrackableEventHandler
         else
             onTrackingLost();
     }
+
     private void OnTrackingFound()
     {
-        Debug.Log("COUCOU");
+        GameManager.instance.CharacterFace();
     }
-    private void onTrackingLost()
-    {
 
-    }
-    private void SetChildrenActive(bool activeState)
+    private void onTrackingLost()
     {
 
     }

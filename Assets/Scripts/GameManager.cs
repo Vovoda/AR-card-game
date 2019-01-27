@@ -145,4 +145,22 @@ public class GameManager : MonoBehaviour
         gameStep = State.Travelling;
         Debug.Log("MapComplete");
     }
+
+    public void CharacterFace()
+    {
+        if(gameStep == State.Travelling)
+        {
+            gameStep = State.Selling;
+            Debug.Log("Selling");
+        }
+    }
+
+    public void CharacterBack()
+    {
+        if (gameStep == State.Selling)
+        {
+            gameStep = State.Travelling;
+            Debug.Log("Travelling");
+        }
+    }
 }
