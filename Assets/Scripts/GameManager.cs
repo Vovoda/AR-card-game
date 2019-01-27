@@ -51,16 +51,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StuffAppear(Stuff stuff)
-    {
-        ChangeBottomTextPosition(new Vector3(stuff.transform.position.x, stuff.transform.position.y - 0.5f, stuff.transform.position.z));
-        ChangeSideTextPosition(new Vector3(stuff.transform.position.x+0.6f, stuff.transform.position.y, stuff.transform.position.z));
-        spriteObject.GetComponent<SpriteRenderer>().sprite = stuff.CardSprite;
-        spriteObject.transform.position= stuff.transform.position;
-        stuff.CheckSell();
-        stuff.DisplayCharacterictics();
-    }
-
     public void SetSideText(string text)
     {
         sideText.GetComponent<TextMesh>().text = text;
@@ -81,8 +71,13 @@ public class GameManager : MonoBehaviour
         sideText.transform.position = position;
     }
 
-    private void InitData()
+    public void SetSpriteObject(Sprite sprite)
     {
-        listStuff[0] = new Stuff()
+        spriteObject.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
+    public void ChangeSpriteObjectPosition(Vector3 position)
+    {
+        spriteObject.transform.position = position;
     }
 }

@@ -19,11 +19,6 @@ public class TrackList : MonoBehaviour
         // Iterate through the list of active trackables
         foreach (TrackableBehaviour tb in activeTrackables)
         {
-            Stuff stuff = tb.GetComponent<Stuff>();
-            if (stuff != null)
-            {
-                GameManager.instance.StuffAppear(stuff);
-            }
         }
     }
 }
