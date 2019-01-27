@@ -15,6 +15,12 @@ public class Stuff : Card, ITrackableEventHandler
     private bool isSeen = false;
     private float widthCameraPercentageSell = 0.3f;
     private float heightCameraPercentageSell = 0.7f;
+    private bool test = false;
+    private float currentTime;
+    private float maxTime=2;
+
+    public int Price { get => price; set => price = value; }
+    public StuffType MyType { get => myType; set => myType = value; }
 
     public Stuff(StuffType newType, int newNumber, int newPrice)
     {
@@ -29,20 +35,6 @@ public class Stuff : Card, ITrackableEventHandler
         GameManager.instance.SetSideText(textToDisplay);
     }
 
-    public IEnumerator CheckSell()
-    {
-        Vector3 positionInScreen = Camera.main.WorldToScreenPoint(this.transform.position);
-        if (positionInScreen.y > (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
-        {
-            Timer.instance.StartTimer(2);
-            while (!Timer.instance.TimerFinished())
-            {
-                yield return null;
-            }
-            GameManager.instance.SetBottomText("Vendu");
-        }
-    }
-
     void Update()
     {
         if (isSeen && state == State.None)
@@ -51,11 +43,32 @@ public class Stuff : Card, ITrackableEventHandler
             GameManager.instance.ChangeSideTextPosition(new Vector3(transform.position.x + 0.6f, transform.position.y, transform.position.z));
             GameManager.instance.SetSpriteObject(CardSprite);
             GameManager.instance.ChangeSpriteObjectPosition(transform.position);
-            if (!Timer.instance.TimerOn)
-            {
-                StartCoroutine(CheckSell());
-            }
             DisplayCharacterictics();
+            Vector3 positionInScreen = Camera.main.WorldToScreenPoint(this.transform.position);
+            if (!test && positionInScreen.y > (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
+            {
+                currentTime = 0;
+                test = true;
+            }
+            if (!test && positionInScreen.y > 0 && positionInScreen.y < (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
+            {
+                Debug.Log("coucou");
+            }
+        }
+        if (test && state!=State.Sold)
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime > maxTime)
+            {
+                Vector3 positionInScreen = Camera.main.WorldToScreenPoint(this.transform.position);
+                if (positionInScreen.y > (heightCameraPercentageSell * Screen.height) && positionInScreen.x < (widthCameraPercentageSell * Screen.width))
+                {
+                    GameManager.instance.SetBottomText("Vendu");
+                    GameManager.instance.SellStuff(this);
+                    state = State.Sold;
+                }
+                test = false;
+            }
         }
     }
 
@@ -65,6 +78,7 @@ public class Stuff : Card, ITrackableEventHandler
         trackableBehaviour = GetComponent<TrackableBehaviour>();
         widthCameraPercentageSell = 0.3f;
         heightCameraPercentageSell = 0.7f;
+        maxTime = 2;
 
         if (trackableBehaviour)
             trackableBehaviour.RegisterTrackableEventHandler(this);
